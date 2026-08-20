@@ -1,7 +1,11 @@
+import Sidebar from "./Sidebar.jsx";
+import Tasks from "./Tasks.jsx";
+
 function App() {
   return (
-    <div>
-      <h1 className="underline mt-05 p-5 bg-red-500">Hello World!</h1>
+    <div className="flex gap-9">
+      <Sidebar />
+      <Tasks />
     </div>
   );
 }
