@@ -11,7 +11,7 @@ const Button = ({ children, variant = "primary", onClick }) => {
 
   return (
     <button
-      className={`flex items-center gap-1 rounded-md px-3 py-1 text-xs font-semibold ${getVariantClasses()} transition hover:opacity-80`}
+      className={`flex items-center gap-1 rounded-md px-3 py-1 text-xs font-semibold ${getVariantClasses()} cursor-pointer transition hover:opacity-80`}
       onClick={onClick}
     >
       {children}
