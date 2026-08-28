@@ -8,6 +8,7 @@ import {
   SunIcon,
   TrashIcon,
 } from "../assets/icons";
+import AddTaskDialog from "./AddTaskDialog";
 import Button from "./Button";
 import TASKS from "./constants/tasks";
 import TaskItem from "./TaskItem";
@@ -15,6 +16,8 @@ import TasksSeparator from "./TasksSeparator";
 
 const Tasks = () => {
   const [tasks, setTasks] = useState(TASKS);
+  const [AddTaskDialogIsOpen, setAddTaskDialogIsOpen] = useState(false);
+
   const morningTasks = tasks.filter((task) => task.time === "morning");
   const afternoonTasks = tasks.filter((task) => task.time === "afternoon");
   const eveningTasks = tasks.filter((task) => task.time === "evening");
@@ -54,21 +57,31 @@ const Tasks = () => {
           </span>
           <h2 className="text-xl font-semibold">Minhas Tarefas</h2>
         </div>
+
         <div className="flex items-center gap-3">
-          <Button>
+          <Button
+            onClick={() => {
+              setAddTaskDialogIsOpen(true);
+            }}
+          >
             Nova Tarefa
             <AddIcon />
           </Button>
+
           <Button variant="ghost">
             Excluir Tarefa
             <TrashIcon />
           </Button>
+
+          <AddTaskDialog isOpen={AddTaskDialogIsOpen} />
         </div>
       </div>
+
       {/* Lista de tarefa */}
       <div className="rounded-xl bg-white p-6">
         <div className="space-y-3">
           <TasksSeparator title="Manhã" icon={<SunIcon />} />
+
           {/* TAREFAS DE MANHÃ */}
           {morningTasks.map((task) => (
             <TaskItem
@@ -79,6 +92,8 @@ const Tasks = () => {
             />
           ))}
         </div>
+
+        {/* TAREFAS TARDE */}
         <div className="my-6 space-y-3">
           <TasksSeparator title="Tarde" icon={<CloudSunIcon />} />
           {afternoonTasks.map((task) => (
@@ -90,6 +105,8 @@ const Tasks = () => {
             />
           ))}
         </div>
+
+        {/* TAREFAS NOITE */}
         <div className="space-y-3">
           <TasksSeparator title="Noite" icon={<MoonIcon />} />
           {eveningTasks.map((task) => (
