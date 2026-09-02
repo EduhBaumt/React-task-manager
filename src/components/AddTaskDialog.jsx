@@ -12,9 +12,15 @@ import TimeSelect from "./TimeSelect";
 const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
   const nodeRef = useRef();
 
-  const [title, setTitle] = useState();
-  const [time, setTime] = useState();
-  const [description, setDescription] = useState();
+  const [title, setTitle] = useState("");
+  const [time, setTime] = useState("morning");
+  const [description, setDescription] = useState("");
+
+  const resetFields = () => {
+    setTitle("");
+    setTime("");
+    setDescription("");
+  };
 
   const handleSaveClick = () => {
     handleSubmit({
@@ -24,6 +30,12 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
       description,
       status: "not_started",
     });
+    handleClose();
+    resetFields();
+  };
+
+  const handleCancelClick = () => {
+    resetFields();
     handleClose();
   };
 
@@ -76,7 +88,7 @@ const AddTaskDialog = ({ isOpen, handleClose, handleSubmit }) => {
                     size="large"
                     className="w-full"
                     variant="secundary"
-                    onClick={handleClose}
+                    onClick={handleCancelClick}
                   >
                     Cancelar
                   </Button>
