@@ -14,7 +14,8 @@
     "react": "^19.2.8",
     "react-dom": "^19.2.8",
     "react-transition-group": "^4.4.5",
-    "sonner": "^2.0.8"
+    "sonner": "^2.0.8",
+    "uuid": "^14.0.2"
   },
   "devDependencies": {
     "@eslint/js": "^10.0.1",
